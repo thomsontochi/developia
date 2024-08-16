@@ -11,13 +11,13 @@
                 <div class="col-lg-7 col-12">
                     <div class="hero-text">
                         <div class="hero-title-wrap d-flex align-items-center mb-4">
-                            <img src="images/dddbg_1.png"
+                            <img src="images/mebright.png"
                                 class="avatar-image avatar-image-large img-fluid" alt="">
 
                             <h1 class="hero-title ms-3 mb-0">Hello friend!</h1>
                         </div>
 
-                        <h2 class="mb-4">I'm available for freelance work.</h2>
+                        <h2 class="mb-4" style="color: #ff5733">I'm available for freelance work.</h2>
                         <p class="mb-4"><a class="custom-btn btn custom-link" href="#section_2">Let's begin</a></p>
                     </div>
                 </div>
@@ -31,11 +31,25 @@
             </div>
         </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#c0a9bd" fill-opacity="1"
+        {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#00000" fill-opacity="1"
                 d="M0,160L24,160C48,160,96,160,144,138.7C192,117,240,75,288,64C336,53,384,75,432,106.7C480,139,528,181,576,208C624,235,672,245,720,240C768,235,816,213,864,186.7C912,160,960,128,1008,133.3C1056,139,1104,181,1152,202.7C1200,224,1248,224,1296,197.3C1344,171,1392,117,1416,90.7L1440,64L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z">
             </path>
-        </svg>
+            {
+
+        </svg> --}}
+        {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#000000" fill-opacity="1" d="M0,320L48,304C96,288,192,256,288,240C384,224,480,224,576,234.7C672,245,768,267,864,266.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
+            </path>
+        </svg> --}}
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+            <path class="wave-animation" fill="#000000" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,213.3C672,224,768,224,864,213.3C960,203,1056,181,1152,170.7C1248,160,1344,160,1392,160L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
+            </path>
+          </svg>
+
+          
+        
     </section>
 
 
@@ -46,10 +60,11 @@
                 <div class="col-lg-8 col-12 mt-5 mt-lg-0">
                     <div class="about-thumb">
 
-                        <div class="section-title-wrap d-flex justify-content-end align-items-center mb-4">
-                            <h2 class="text-white me-4 mb-0">My Story</h2>
+                        <div class="section-title-wrap d-flex  align-items-center mb-4">
+                           
 
                             <img src="images/IMG_3679.JPG" class="avatar-image img-fluid" alt="">
+                            <h2 class="text-white me-4 mb-0">My Story</h2>
                         </div>
 
                         <h3 class="pt-2 mb-3">Meet Austin Opia <br/> Digital Architect and Code Composer</h3>
@@ -174,7 +189,7 @@
 
                 <div class="col-lg-10 col-12 mx-auto">
                     <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
-                        <img src="images/handshake-man-woman-after-signing-business-contract-closeup.jpg"
+                        <img src="images/handshake.png"
                             class="avatar-image img-fluid" alt="">
 
                         <h2 class="text-white ms-4 mb-0">Services</h2>
@@ -195,7 +210,7 @@
                                 <p>You may want to explore Too CSS for great collection of free HTML CSS templates.
                                 </p>
 
-                                <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
+                                <a href="#" class="custom-btn custom-border-btn btn mt-3" style="color: #000000">Discover More</a>
 
                                 <div class="services-icon-wrap d-flex justify-content-center align-items-center">
                                     <i class="services-icon bi-globe"></i>
@@ -217,7 +232,7 @@
                                 <p>You can explore more CSS templates on developia website by browsing through
                                     different tags.</p>
 
-                                <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
+                                    <a href="#" class="custom-btn custom-border-btn btn mt-3" style="color: #000000">Discover More</a>
 
                                 <div class="services-icon-wrap d-flex justify-content-center align-items-center">
                                     <i class="services-icon bi-lightbulb"></i>
@@ -239,7 +254,7 @@
                                 <p>If you need a customized ecommerce website for your business, feel free to
                                     discuss with me.</p>
 
-                                <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
+                                    <a href="#" class="custom-btn custom-border-btn btn mt-3" style="color: #000000">Discover More</a>
 
                                 <div class="services-icon-wrap d-flex justify-content-center align-items-center">
                                     <i class="services-icon bi-phone"></i>
@@ -261,7 +276,7 @@
                                 <p>To list your website first on any search engine, we will work together. First
                                     Portfolio is one-page CSS Template for free download.</p>
 
-                                <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
+                                    <a href="#" class="custom-btn custom-border-btn btn mt-3" style="color: #000000">Discover More</a>
 
                                 <div class="services-icon-wrap d-flex justify-content-center align-items-center">
                                     <i class="services-icon bi-google"></i>

@@ -6,12 +6,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a href="index.html" class="navbar-brand mx-auto mx-lg-0">developia</a>
+        <a href="index.html" class="navbar-brand mx-auto mx-lg-0">DEVELOPIA</a>
 
         <div class="d-flex align-items-center d-lg-none">
-            <i class="navbar-icon bi-telephone-plus me-3"></i>
+            <i class="navbar-icon bi-mail-plus me-3"></i>
             <a class="custom-btn btn" href="#section_5">
-                120-240-9600
+               Opiaaustin@gmail.com
             </a>
         </div>
 
@@ -39,9 +39,9 @@
             </ul>
 
             <div class="d-lg-flex align-items-center d-none ms-auto">
-                <i class="navbar-icon bi-telephone-plus me-3"></i>
+                <i class="navbar-icon bi-mailbox me-3"></i>
                 <a class="custom-btn btn" href="#section_5">
-                    120-240-9600
+                    Opiaaustin@gmail.com
                 </a>
             </div>
         </div>
