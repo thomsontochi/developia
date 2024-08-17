@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.projects-image.img-fluid {
+    width: 100px !important;
+}
+
+.dark\:bg-gray-900 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(15, 15, 15, 1);
+}
+
+.dark\:bg-gray-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(56, 58, 61, 1);
+    }
