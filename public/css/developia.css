@@ -1215,3 +1215,8 @@ h2.text-white.me-4.mb-0 {
 }
 
 
+.services-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
