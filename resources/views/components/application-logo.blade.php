@@ -1,1 +1,1 @@
-<img src="images/logo3.png" class="projects-image img-fluid" alt="">
+<img src="images/logo3.png" class="projects-image img-fluid" alt="" style="width: 100px;">
