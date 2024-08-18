@@ -32,18 +32,7 @@
                                     <span class="inline-block bg-red-200 dark:bg-red-700 rounded-full px-3 py-1 text-sm font-semibold text-red-700 dark:text-red-300">Inactive</span>
                                 @endif
                             </div>
-                            {{-- <div class="mt-4 flex justify-between items-center">
-                                <a href="{{ route('services.edit', $service->id) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
-                                    Edit
-                                </a>
-                                <form action="{{ route('services.destroy', $service->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this service?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button @click="$dispatch('open-modal', { id: {{ $service->id }}, name: '{{ $service->name }}' })" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-800 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">
-                                        Delete
-                                    </button>
-                                </form>
-                            </div> --}}
+                            
                             <div class="mt-4 flex justify-between items-center">
                                 <a href="{{ route('services.edit', $service->id) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
                                     Edit
@@ -60,7 +49,14 @@
     </div>
 
      <!-- Delete Confirmation Modal -->
-     <div x-data="{ open: false, serviceId: null, serviceName: '' }" @open-modal.window="open = true; serviceId = $event.detail.id; serviceName = $event.detail.name" x-show="open" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+     <div x-data="{ open: false, serviceId: null, serviceName: '' }" 
+     @open-modal.window="open = true; serviceId = $event.detail.id; serviceName = $event.detail.name" 
+     x-show="open" 
+     x-cloak
+     class="fixed z-10 inset-0 overflow-y-auto" 
+     aria-labelledby="modal-title" 
+     role="dialog" 
+     aria-modal="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
@@ -102,3 +98,6 @@
         </div>
     </div>
 </x-app-layout>
+<style>
+    [x-cloak] { display: none !important; }
+</style>

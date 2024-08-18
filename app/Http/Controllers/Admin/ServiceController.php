@@ -71,16 +71,34 @@ class ServiceController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'nullable|numeric',
-            'duration' => 'nullable|string',
-            'category' => 'nullable|string',
-            'image' => 'nullable|string',
+            'description' => 'required|string|max:1000',
+            'price' => 'required|numeric|min:0|max:999999.99',
+            'duration' => 'nullable|string|regex:/^(?:\d+[hm])+$/',
+            'category' => 'required|string|max:100',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'remove_image' => 'nullable|boolean',
             'is_active' => 'boolean',
         ]);
-
-        $service->update($request->all());
-
+    
+        $data = $request->except(['image', 'remove_image']);
+    
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($service->image) {
+                Storage::delete($service->image);
+            }
+            // Store new image
+            $data['image'] = $request->file('image')->store('services', 'public');
+        } elseif ($request->boolean('remove_image')) {
+            // Delete image if remove_image is checked
+            if ($service->image) {
+                Storage::delete($service->image);
+            }
+            $data['image'] = null;
+        }
+    
+        $service->update($data);
+    
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');
     }
 
