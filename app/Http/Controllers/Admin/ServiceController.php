@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreServiceRequest;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ServiceController extends Controller
 {
@@ -27,29 +28,27 @@ class ServiceController extends Controller
     {
         try {
             $validated = $request->validated();
-            // $validated = $request->validate([
-            //     'name' => 'required|string|max:255',
-            //     'description' => 'required|string',
-            //     'price' => 'nullable|numeric',
-            //     'duration' => 'nullable|string',
-            //     'category' => 'nullable|string',
-            //     'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            //     'is_active' => 'boolean',
-            // ]);
-    
-            // Handle the image upload
+
             if ($request->hasFile('image')) {
-                $imageName = Str::slug($validated['name']) . '-' . time() . '.' . $request->image->extension();
-                $request->image->move(public_path('images/services'), $imageName);
-                $validated['image'] = 'images/services/' . $imageName;
+                $image = $request->file('image');
+                $imageName = Str::slug($validated['name']) . '-' . time() . '.' . $image->getClientOriginalExtension();
+                
+                // Create and resize the image
+                $resizedImage = Image::read($image)->cover(640, 640);
+                $destinationPath = 'images/services/';
+                
+                // Save the image
+                Storage::disk('public')->put($destinationPath . $imageName, $resizedImage->encode());
+                
+                $validated['image'] = $destinationPath . $imageName;
             }
-    
+
             // Create the service record
             Service::create($validated);
-    
+
             // Log the successful creation
             Log::info('Service created successfully', ['name' => $validated['name']]);
-    
+
             return redirect()->route('services.index')->with('success', 'Service created successfully.');
         } catch (\Exception $e) {
             // Log the error
@@ -57,7 +56,6 @@ class ServiceController extends Controller
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
             ]);
-    
             return redirect()->route('services.create')->withErrors('Failed to create service. Please try again.');
         }
     }
@@ -67,45 +65,43 @@ class ServiceController extends Controller
         return view('admin.services.edit', compact('service'));
     }
 
-    public function update(Request $request, Service $service)
+    public function update(StoreServiceRequest $request, Service $service)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string|max:1000',
-            'price' => 'required|numeric|min:0|max:999999.99',
-            'duration' => 'nullable|string|regex:/^(?:\d+[hm])+$/',
-            'category' => 'required|string|max:100',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'remove_image' => 'nullable|boolean',
-            'is_active' => 'boolean',
-        ]);
-    
-        $data = $request->except(['image', 'remove_image']);
-    
+        $validated = $request->validated();
+
         if ($request->hasFile('image')) {
             // Delete old image
             if ($service->image) {
-                Storage::delete($service->image);
+                Storage::disk('public')->delete($service->image);
             }
-            // Store new image
-            $data['image'] = $request->file('image')->store('services', 'public');
+
+            $image = $request->file('image');
+            $imageName = Str::slug($validated['name']) . '-' . time() . '.' . $image->getClientOriginalExtension();
+            
+            // Create and resize the image
+            $resizedImage = Image::read($image)->cover(640, 640);
+            $destinationPath = 'images/services/';
+            
+            // Save the image
+            Storage::disk('public')->put($destinationPath . $imageName, $resizedImage->encode());
+            
+            $validated['image'] = $destinationPath . $imageName;
         } elseif ($request->boolean('remove_image')) {
             // Delete image if remove_image is checked
             if ($service->image) {
-                Storage::delete($service->image);
+                Storage::disk('public')->delete($service->image);
             }
-            $data['image'] = null;
+            $validated['image'] = null;
         }
-    
-        $service->update($data);
-    
+
+        $service->update($validated);
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');
     }
 
     public function destroy(Service $service)
     {
         if ($service->image) {
-            Storage::delete($service->image);
+            Storage::disk('public')->delete($service->image);
         }
         $service->delete();
         return redirect()->route('services.index')->with('success', 'Service deleted successfully');

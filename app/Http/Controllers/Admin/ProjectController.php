@@ -6,6 +6,8 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ProjectController extends Controller
 {
@@ -20,9 +22,27 @@ class ProjectController extends Controller
         return view('admin.projects.create');
     }
 
+    
     public function store(ProjectRequest $request)
     {
-        $project = Project::create($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            
+            // Create and resize the image
+            $resizedImage = Image::read($image)->cover(640, 640);
+            $destinationPath = 'images/projects/';
+            
+            // Save the image
+            Storage::disk('public')->put($destinationPath . $imageName, $resizedImage->encode());
+            
+            // Add the image path to the data array
+            $data['image'] = $destinationPath . $imageName;
+        }
+
+        Project::create($data);
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 
@@ -33,14 +53,40 @@ class ProjectController extends Controller
 
     public function update(ProjectRequest $request, Project $project)
     {
-        $project->update($request->validated());
-        return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully.');
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($project->image) {
+                Storage::disk('public')->delete($project->image);
+            }
+
+            $image = $request->file('image');
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            
+            // Create and resize the image
+            $resizedImage = Image::read($image)->cover(640, 640);
+            $destinationPath = 'images/projects/';
+            
+            // Save the image
+            Storage::disk('public')->put($destinationPath . $imageName, $resizedImage->encode());
+            
+            // Add the image path to the data array
+            $data['image'] = $destinationPath . $imageName;
+        }
+
+        $project->update($data);
+        return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
     }
 
     public function destroy(Project $project)
     {
-        $project->delete();
+        // Delete the image file if it exists
+        if ($project->image) {
+            Storage::disk('public')->delete($project->image);
+        }
 
+        $project->delete();
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
     }
 }

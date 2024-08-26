@@ -41,6 +41,7 @@
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">URL</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                 </tr>
                             </thead>
@@ -55,6 +56,10 @@
                                             @else
                                                 N/A
                                             @endif
+                                        </td>
+                                        <td class="px-6">
+                                            <img src="{{ asset($project->image) }}" alt="{{ $project->title }}" class="w-full h-48 object-cover">
+
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                             <a href="{{ route('projects.edit', $project) }}" class="text-indigo-600 hover:text-indigo-900 mr-2">Edit</a>
@@ -114,7 +119,7 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <form x-bind:action="'/projects/' + projectId" method="POST">
+                    <form x-bind:action="'projects/' + projectId" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit"

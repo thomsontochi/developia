@@ -1,4 +1,4 @@
-<form action="{{ $project->id ? route('projects.update', $project) : route('projects.store') }}" method="POST">
+<form action="{{ $project->id ? route('projects.update', $project) : route('projects.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     @if($project->id)
         @method('PUT')
@@ -20,9 +20,19 @@
         @enderror
     </div>
 
-    <div class="mb-4">
+    {{-- <div class="mb-4">
         <label for="image" class="block text-sm font-medium text-gray-700">Image URL</label>
         <input type="text" name="image" id="image" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ old('image', $project->image) }}">
+        @error('image')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div> --}}
+    <div class="mb-4">
+        <label for="image" class="block text-sm font-medium text-gray-700">Project Image</label>
+        <input type="file" name="image" id="image" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        @if($project->image)
+            <img src="{{ asset($project->image) }}" alt="{{ $project->title }}" class="mt-2 h-20 w-20 object-cover rounded-md">
+        @endif
         @error('image')
             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
         @enderror

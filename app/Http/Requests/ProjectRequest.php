@@ -25,7 +25,7 @@ class ProjectRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'url' => 'nullable|url|max:255',
         ];
     }
@@ -37,5 +37,9 @@ class ProjectRequest extends FormRequest
             'description' => strip_tags($this->description),
             'url' => $this->url ? filter_var($this->url, FILTER_SANITIZE_URL) : null,
         ]);
+
+        if ($this->hasFile('image')) {
+            $this->except('image');
+        }
     }
 }
