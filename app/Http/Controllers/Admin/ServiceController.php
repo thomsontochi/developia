@@ -67,6 +67,7 @@ class ServiceController extends Controller
 
     public function update(StoreServiceRequest $request, Service $service)
     {
+        // dd($request);
         $validated = $request->validated();
 
         if ($request->hasFile('image')) {

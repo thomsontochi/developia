@@ -21,14 +21,32 @@ class StoreServiceRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+       
+        // return [
+        //     'name' => 'required|string|max:255',
+        //     'description' => 'required|string|max:1000',
+        //     'price' => 'required|numeric|min:0|max:999999.99',
+        //     'duration' => 'nullable|regex:/^(?:\d+[hm])+$/',
+        //     'category' => 'required|string|max:100',
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     'is_active' => 'boolean',
+        // ];
+        $rules = [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
             'price' => 'required|numeric|min:0|max:999999.99',
             'duration' => 'nullable|regex:/^(?:\d+[hm])+$/',
             'category' => 'required|string|max:100',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_active' => 'boolean',
+            'remove_image' => 'nullable|boolean',
         ];
+    
+        if ($this->isMethod('post') || $this->hasFile('image')) {
+            $rules['image'] = 'required|image|mimes:jpeg,png,jpg,gif|max:2048';
+        } else {
+            $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048';
+        }
+    
+        return $rules;
     }
 }

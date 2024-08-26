@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -15,6 +16,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('web')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('welcome');
+    Route::get('/about', [HomeController::class, 'about'])->name('about');
+    Route::get('/services', [HomeController::class, 'services'])->name('services');
+    Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+});
+
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -26,12 +35,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 
 
-Route::middleware('web')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('welcome');
-    Route::get('/about', [HomeController::class, 'about'])->name('about');
-    Route::get('/services', [HomeController::class, 'services'])->name('services');
-    Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
-});
+
 
 // Auth::routes(['register' => false]);
 

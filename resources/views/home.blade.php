@@ -228,7 +228,7 @@
     </section>
     
 
-    <section class="projects section-padding" id="section_4">
+    {{-- <section class="projects section-padding" id="section_4">
         <div class="container">
             <div class="row">
 
@@ -290,7 +290,39 @@
 
             </div>
         </div>
+    </section> --}}
+
+    <section class="projects section-padding" id="section_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-12 ms-auto">
+                    <div class="section-title-wrap d-flex justify-content-center align-items-center mb-4">
+                        <img src="images/white-desk-work-study-aesthetics.jpg" class="avatar-image img-fluid" alt="">
+                        <h2 class="text-white ms-4 mb-0">Projects</h2>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                @foreach($projects as $project)
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="projects-thumb">
+                            <div class="projects-info">
+                                {{-- <small class="projects-tag">{{ $project->category }}</small> --}}
+                                <h3 class="projects-title">{{ $project->title }}</h3>
+                                <p style="color: white">{{ Str::limit($project->description, 100) }}</p>
+                                @if($project->url)
+                                    <a href="{{ $project->url }}" target="_blank" class="btn btn-sm btn-primary mb-5">View Project</a>
+                                @endif
+                            </div>
+                            <a href="{{ asset($project->image) }}" class="popup-image">
+                                <img src="{{ asset($project->image) }}" class="projects-image img-fluid" alt="{{ $project->name }}">
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </section>
+
 
     <section class="contact section-padding" id="section_5">
         <div class="container">
@@ -352,23 +384,24 @@
                         <strong class="site-footer-title d-block mt-4 mb-3">Email</strong>
 
                         <p>
-                            <a href="mailto:hello@josh.design">
-                                hello@josh.design
+                            <a href="mailto:opiaaustin@gmail.com"  style="color: #000000">
+                               opiaaustin@gmail.com
                             </a>
                         </p>
 
                         <strong class="site-footer-title d-block mt-4 mb-3">Call</strong>
 
                         <p class="mb-0">
-                            <a href="tel: 120-240-9600">
-                                120-240-9600
+                            <a href="tel: +2348128138169"  style="color: #000000">
+                              +2348128138169
                             </a>
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                    <form action="#" method="get" class="custom-form contact-form" role="form">
+
+                    {{-- <form action="#" method="get" class="custom-form contact-form" role="form">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-floating">
@@ -450,7 +483,83 @@
                             </div>
 
                         </div>
+                    </form> --}}
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('contact.store') }}" method="POST" class="custom-form contact-form" role="form">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" required="">
+                                    <label for="name">Name</label>
+                                </div>
+                            </div>
+                    
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-floating">
+                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
+                                    <label for="email">Email address</label>
+                                </div>
+                            </div>
+                    
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="form-check form-check-inline">
+                                    <input name="website" type="checkbox" class="form-check-input" id="inlineCheckbox1" value="1">
+                                    <label class="form-check-label" for="inlineCheckbox1">
+                                        <i class="bi-globe form-check-icon"></i>
+                                        <span class="form-check-label-text">Websites</span>
+                                    </label>
+                                </div>
+                            </div>
+                    
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="form-check form-check-inline">
+                                    <input name="branding" type="checkbox" class="form-check-input" id="inlineCheckbox2" value="1">
+                                    <label class="form-check-label" for="inlineCheckbox2">
+                                        <i class="bi-lightbulb form-check-icon"></i>
+                                        <span class="form-check-label-text">Branding</span>
+                                    </label>
+                                </div>
+                            </div>
+                    
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="form-check form-check-inline">
+                                    <input name="ecommerce" type="checkbox" class="form-check-input" id="inlineCheckbox3" value="1">
+                                    <label class="form-check-label" for="inlineCheckbox3">
+                                        <i class="bi-phone form-check-icon"></i>
+                                        <span class="form-check-label-text">Ecommerce</span>
+                                    </label>
+                                </div>
+                            </div>
+                    
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="form-check form-check-inline me-0">
+                                    <input name="seo" type="checkbox" class="form-check-input" id="inlineCheckbox4" value="1">
+                                    <label class="form-check-label" for="inlineCheckbox4">
+                                        <i class="bi-google form-check-icon"></i>
+                                        <span class="form-check-label-text">SEO</span>
+                                    </label>
+                                </div>
+                            </div>
+                    
+                            <div class="col-lg-12 col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="message" name="message" placeholder="Tell me about the project"></textarea>
+                                    <label for="message">Tell me about the project</label>
+                                </div>
+                            </div>
+                    
+                            <div class="col-lg-3 col-12 ms-auto">
+                                <button type="submit" class="form-control"  style="color: #000000">Send</button>
+                            </div>
+                        </div>
                     </form>
+
                 </div>
 
             </div>

@@ -18,17 +18,17 @@
             <x-label for="price" :value="__('Price')" />
             <x-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price', $service?->price)" required step="0.01" min="0" max="999999.99" />
         </div>
-        <div>
+        {{-- <div>
             <x-label for="duration" :value="__('Duration')" />
             <x-input id="duration" class="block mt-1 w-full" type="text" name="duration" :value="old('duration', $service?->duration)" pattern="^(?:\d+[hm])+$" title="Enter duration in format like '2h30m'" />
-        </div>
+        </div> --}}
         <div>
             <x-label for="category" :value="__('Category')" />
             <x-input id="category" class="block mt-1 w-full" type="text" name="category" :value="old('category', $service?->category)" required maxlength="100" />
         </div>
         <div>
             <x-label for="image" :value="__('Image')" />
-            <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
+            <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*"/>
             @if($service && $service->image)
                 <div class="mt-2">
                     <img src="{{ asset($service->image) }}" alt="{{ $service->name }}" class="w-32 h-32 object-cover">
