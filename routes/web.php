@@ -7,14 +7,18 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/404', function () {
-    return view('errors.404');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+     ->middleware('auth', 'verified')
+     ->name('dashboard');
+
 
 Route::middleware('web')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('welcome');
@@ -25,6 +29,7 @@ Route::middleware('web')->group(function () {
 });
 
 Route::prefix('admin')->middleware('auth')->group(function () {
+    // Route::get('/dashboard' , [DashboardController::class,'dashboard'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -32,12 +37,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('services', ServiceController::class)->except(['show']);
 });
 
-
-
-
-
-
 // Auth::routes(['register' => false]);
 
 
 require __DIR__.'/auth.php';
+
+Route::get('/404', function () {
+    return view('errors.404');
+});

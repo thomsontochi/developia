@@ -41,7 +41,7 @@
         </div>
         <div>
             <label for="is_active" class="inline-flex items-center">
-                <input id="is_active" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="is_active" value="1" {{ old('is_active', $service?->is_active) ? 'checked' : '' }}>
+                <input id="is_active" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="is_active"  {{ old('is_active', $service?->is_active) ? 'checked' : '' }}>
                 <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Active') }}</span>
             </label>
         </div>

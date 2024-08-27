@@ -183,7 +183,7 @@
     </section>
 
 
-    <section class="services section-padding" id="section_3">
+    {{-- <section class="services section-padding" id="section_3">
         <div class="container">
             <div class="row">
 
@@ -217,7 +217,7 @@
                                     @else
                                         <i class="services-icon bi-globe"></i>
                                     @endif
-                                </div> --}}
+                                </div> 
                             </div>
                         </div>
                         @endforeach
@@ -225,74 +225,52 @@
                 </div>
             </div>
         </div>
-    </section>
-    
-
-    {{-- <section class="projects section-padding" id="section_4">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-8 col-md-8 col-12 ms-auto">
-                    <div class="section-title-wrap d-flex justify-content-center align-items-center mb-4">
-                        <img src="images/white-desk-work-study-aesthetics.jpg" class="avatar-image img-fluid"
-                            alt="">
-
-                        <h2 class="text-white ms-4 mb-0">Projects</h2>
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
-
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="projects-thumb">
-                        <div class="projects-info">
-                            <small class="projects-tag">Branding</small>
-
-                            <h3 class="projects-title">Zoik agency</h3>
-                        </div>
-
-                        <a href="images/projects/nikhil-KO4io-eCAXA-unsplash.jpg" class="popup-image">
-                            <img src="images/projects/nikhil-KO4io-eCAXA-unsplash.jpg"
-                                class="projects-image img-fluid" alt="">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="projects-thumb">
-                        <div class="projects-info">
-                            <small class="projects-tag">Photography</small>
-
-                            <h3 class="projects-title">The Watch</h3>
-                        </div>
-
-                        <a href="images/projects/the-5th-IQYR7N67dhM-unsplash.jpg" class="popup-image">
-                            <img src="images/projects/the-5th-IQYR7N67dhM-unsplash.jpg"
-                                class="projects-image img-fluid" alt="">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="projects-thumb">
-                        <div class="projects-info">
-                            <small class="projects-tag">Website</small>
-
-                            <h3 class="projects-title">Polo</h3>
-                        </div>
-
-                        <a href="images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg" class="popup-image">
-                            <img src="images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg"
-                                class="projects-image img-fluid" alt="">
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </section> --}}
 
-    <section class="projects section-padding" id="section_4">
+    <section class="services section-padding" id="section_3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-12 mx-auto">
+                    <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
+                        <img src="images/handshake.png" class="avatar-image img-fluid" alt="">
+                        <h2 class="text-white ms-4 mb-0">Services</h2>
+                    </div>
+    
+                    <div class="row pt-lg-5">
+                        @if($services->isEmpty())
+                            <div class="col-12 text-center">
+                                {{-- <img src="images/empty2.svg" alt="No Services" class="img-fluid mb-4" style="max-width: 200px;"> --}}
+                                <h3 class="text-white">No Services Available Yet</h3>
+                                <p class="text-white">Please check back later for updates.</p>
+                            </div>
+                        @else
+                            @foreach($services as $service)
+                            <div class="col-lg-6 col-12">
+                                <div class="services-thumb">
+                                    <div class="d-flex flex-wrap align-items-center border-bottom mb-4 pb-3">
+                                        <h3 class="mb-0">{{ $service->name }}</h3>
+                                        <div class="services-price-wrap ms-auto">
+                                            <p class="services-price-text mb-0">${{ number_format($service->price, 2) }}</p>
+                                            <div class="services-price-overlay"></div>
+                                        </div>
+                                    </div>
+                                    <p>{{ $service->description }}</p>
+                                    <a href="#" class="custom-btn custom-border-btn btn mt-3" style="color: #000000">Discover More</a>
+                                    <div class="services-icon-wrap d-flex justify-content-center align-items-center">
+                                        <i class="services-icon bi-globe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    {{-- <section class="projects section-padding" id="section_4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-12 ms-auto">
@@ -306,7 +284,7 @@
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="projects-thumb">
                             <div class="projects-info">
-                                {{-- <small class="projects-tag">{{ $project->category }}</small> --}}
+                               
                                 <h3 class="projects-title">{{ $project->title }}</h3>
                                 <p style="color: white">{{ Str::limit($project->description, 100) }}</p>
                                 @if($project->url)
@@ -321,7 +299,47 @@
                 @endforeach
             </div>
         </div>
+    </section> --}}
+
+    <section class="projects section-padding" id="section_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-12 ms-auto">
+                    <div class="section-title-wrap d-flex justify-content-center align-items-center mb-4">
+                        <img src="images/white-desk-work-study-aesthetics.jpg" class="avatar-image img-fluid" alt="">
+                        <h2 class="text-white ms-4 mb-0">Projects</h2>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                @if($projects->isEmpty())
+                    <div class="col-12 text-center">
+                        <img src="images/empty.jpg" alt="No Projects" class="img-fluid mb-4" style="max-width: 200px;">
+                        <h3 class="text-white">No Projects Available Yet</h3>
+                        <p class="text-white">We are working on new projects. Stay tuned!</p>
+                    </div>
+                @else
+                    @foreach($projects as $project)
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="projects-thumb">
+                                <div class="projects-info">
+                                    {{-- <small class="projects-tag">{{ $project->category }}</small> --}}
+                                    <h3 class="projects-title">{{ $project->title }}</h3>
+                                    <p style="color: white">{{ Str::limit($project->description, 100) }}</p>
+                                    @if($project->url)
+                                        <a href="{{ $project->url }}" target="_blank" class="btn btn-sm btn-primary mb-5">View Project</a>
+                                    @endif
+                                </div>
+                                <a href="{{ asset($project->image) }}" class="popup-image">
+                                    <img src="{{ asset($project->image) }}" class="projects-image img-fluid" alt="{{ $project->name }}">
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
     </section>
+    
 
 
     <section class="contact section-padding" id="section_5">

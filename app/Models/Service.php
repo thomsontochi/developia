@@ -18,4 +18,13 @@ class Service extends Model
         'image',
         'is_active',
     ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
+    public function setIsActiveAttribute($value)
+    {
+        $this->attributes['is_active'] = $value ?? false;
+    }
 }
