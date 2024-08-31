@@ -25,6 +25,10 @@
                         {{ __('Projects') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('testimonials.index')" :active="request()->routeIs('testimonials.index')">
+                        {{ __('Testimonials') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 

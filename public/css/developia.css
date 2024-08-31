@@ -235,7 +235,7 @@ strong {
 
 .is-sticky .navbar-icon {
   background: var(--secondary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
 }
 
 .form-check-icon {
@@ -329,13 +329,13 @@ strong {
 }
 
 .is-sticky .navbar .custom-btn {
-  border-color: var(--secondary-color);
-  color: var(--secondary-color);
+  border-color: var(--dark-color);
+  color: var(--dark-color);
 }
 
 .is-sticky .navbar .custom-btn:hover {
   background: var(--secondary-color);
-  color: var(--white-color);
+  color: var(--dark-color);
 }
 
 .navbar {
@@ -664,13 +664,13 @@ strong {
 }
 
 .services-thumb:hover {
-  border: 2px solid var(--secondary-color);
+  border: 2px solid var(--dark-color);
   box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
 }
 
 .services-thumb:hover .services-icon-wrap {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
+  background: var(--dark-color);
+  border-color: var(--dark-color);
   color: var(--white-color);
 }
 
@@ -693,7 +693,7 @@ strong {
 }
 
 .services-thumb:hover .services-price-wrap {
-  background: var(--secondary-color);
+  background: var(--dark-color);
 }
 
 .services-thumb:hover .services-price-overlay {
@@ -1211,8 +1211,11 @@ h2.text-white.me-4.mb-0 {
 }
 @keyframes wave {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-56%); }
 }
+
+
+
 
 
 .services-icon {

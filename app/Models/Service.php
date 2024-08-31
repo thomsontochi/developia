@@ -15,7 +15,8 @@ class Service extends Model
         'price',
         'duration',
         'category',
-        'image',
+        // 'image',
+        'icon_class',
         'is_active',
     ];
 

@@ -62,6 +62,7 @@ class ServiceController extends Controller
 
     public function store(StoreServiceRequest $request)
     {
+        
         $validated = $request->validated();
 
         $service = new Service();
@@ -69,19 +70,22 @@ class ServiceController extends Controller
         $service->description = $validated['description'];
         $service->price = $validated['price'];
         $service->category = $validated['category'];
+        $service->icon_class = $validated['icon_class'];
         $service->is_active = $request->has('is_active');
 
         // Handle image upload
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = Str::slug($validated['name']) . '-' . time() . '.' . $image->getClientOriginalExtension();
-            // Create and resize the image
-            $resizedImage = Image::read($image)->cover(640, 640);
-            $destinationPath = 'images/services/';
-            // Save the image
-            Storage::disk('public')->put($destinationPath . $imageName, $resizedImage->encode());
-            $service->image = $destinationPath . $imageName;
-        }
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $imageName = Str::slug($validated['name']) . '-' . time() . '.' . $image->getClientOriginalExtension();
+        //     // Create and resize the image
+        //     $resizedImage = Image::read($image)->cover(640, 640);
+        //     $destinationPath = 'images/services/';
+        //     // Save the image
+        //     Storage::disk('public')->put($destinationPath . $imageName, $resizedImage->encode());
+        //     $service->image = $destinationPath . $imageName;
+        // }
+
+        // dd($service->toArray());
 
         $service->save();
 

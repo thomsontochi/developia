@@ -95,10 +95,14 @@
             @else
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach ($services as $service)
-                        <div
-                            class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">
-                            <img src="{{ asset($service->image) }}" alt="{{ $service->name }}"
-                                class="w-full h-48 object-cover">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">
+                            {{-- <img src="{{ asset($service->image) }}" alt="{{ $service->name }}"
+                                class="w-full h-48 object-cover"> --}}
+                                {{-- <img src="{{ $service->icon_class }}" alt="{{ $service->name }}"class="w-full h-48 object-cover"> --}}
+                            {{-- <i class="services-icon {{$service->icon_class}}"></i> --}}
+                            
+                            
+
                             <div class="p-6">
                                 <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
                                     {{ $service->name }}</h3>
@@ -139,6 +143,8 @@
             @endif
         </div>
     </div>
+
+    
 
     <!-- Delete Confirmation Modal -->
     <div x-data="{ open: false, serviceId: null, serviceName: '' }"

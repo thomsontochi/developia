@@ -10,7 +10,7 @@
 
         <div class="d-flex align-items-center d-lg-none">
             <i class="navbar-icon bi-mail-plus me-3"></i>
-            <a class="custom-btn btn" href="#section_5">
+            <a class="custom-btn btn" href="mailto:opiaaustin@gmail.com">
                Opiaaustin@gmail.com
             </a>
         </div>
@@ -40,7 +40,7 @@
 
             <div class="d-lg-flex align-items-center d-none ms-auto">
                 <i class="navbar-icon bi-mailbox me-3"></i>
-                <a class="custom-btn btn" href="#section_5">
+                <a class="custom-btn btn" href="mailto:opiaaustin@gmail.com">
                     Opiaaustin@gmail.com
                 </a>
             </div>

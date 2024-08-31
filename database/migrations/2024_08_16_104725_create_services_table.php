@@ -18,7 +18,8 @@ return new class extends Migration
             $table->decimal('price', 8, 2)->nullable(); // Price of the service
             $table->string('duration')->nullable(); // Duration of the service
             $table->string('category')->nullable(); // Category of the service
-            $table->string('image')->nullable(); // Image URL for the service
+            $table->string('icon_class')->nullable();
+            // $table->string('image')->nullable(); // Image URL for the service
             $table->boolean('is_active')->default(true); // Status of the service
             $table->timestamps();
         });
