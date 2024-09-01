@@ -11,8 +11,8 @@
                     <div class="col-lg-7 col-12">
                         <div class="hero-text">
                             <div class="hero-title-wrap d-flex align-items-center mb-4">
-                                <img src="images/mebright.png" class="avatar-image avatar-image-large img-fluid"
-                                    alt="">
+                                
+                                <img src="images/mebright.png" class="avatar-image img-fluid" alt="Austin Opia - Full Stack Developer Profile Picture" loading="lazy">
 
                                 <h1 class="hero-title ms-3 mb-0">Hello friend!</h1>
                             </div>
