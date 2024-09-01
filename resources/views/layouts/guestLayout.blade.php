@@ -16,6 +16,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
+
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/bootstrap-icons.css" rel="stylesheet">
@@ -23,7 +25,9 @@
     <link href="css/magnific-popup.css" rel="stylesheet">
 
     <link href="css/developia.css" rel="stylesheet">
-    
+
+    {{-- {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
 
 </head>
 <body>
@@ -47,5 +51,9 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/magnific-popup-options.js"></script>
     <script src="js/custom.js"></script>
+
+    <script src="{{ mix('js/app.js') }}"></script>
+
+    
 </body>
 </html>

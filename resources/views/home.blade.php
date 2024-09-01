@@ -38,53 +38,6 @@
 
         </section>
 
-        {{-- <section class="about section-padding" id="section_2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-12 mt-5 mt-lg-0">
-                    <div class="about-thumb">
-                        <div class="section-title-wrap d-flex align-items-center mb-4">
-                            <img src="images/IMG_3679.JPG" class="avatar-image img-fluid" alt="Austin Opia">
-                            <h2 class="text-white me-4 mb-0">My Story</h2>
-                        </div>
-    
-                        <h3 class="pt-2 mb-3">Meet Austin Opia <br/> Digital Architect and Code Composer</h3>
-    
-                        <p>With over 7 years of experience as a Full Stack Software Engineer, I transform complex ideas into elegant, efficient web solutions. Specializing in PHP and Laravel, I've crafted scalable applications that handle millions of transactions and rival industry giants.</p>
-    
-                        <p>My expertise spans the entire development lifecycle, with a particular knack for optimizing performance and creating intuitive user experiences. Whether it's e-commerce platforms or cutting-edge learning management systems, I'm passionate about pushing the boundaries of web development.</p>
-    
-                        <p>Driven by a commitment to innovation and continuous learning, I approach every project as an opportunity to deliver impactful digital solutions. My blend of technical prowess and creative problem-solving makes me an asset to any team looking to make a real-world impact through technology.</p>
-    
-                        <p>Let's build something extraordinary together.</p>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 col-12 d-flex align-items-center">
-                    <div class="about-thumb mx-auto">
-                        <div class="row">
-                            <div class="col-lg-6 col-6 featured-border-bottom py-2">
-                                <strong class="featured-numbers">7+</strong>
-                                <p class="featured-text">Years of Experience</p>
-                            </div>
-                            <div class="col-lg-6 col-6 featured-border-start featured-border-bottom ps-5 py-2">
-                                <strong class="featured-numbers">245</strong>
-                                <p class="featured-text">Happy Customers</p>
-                            </div>
-                            <div class="col-lg-6 col-6 pt-4">
-                                <strong class="featured-numbers">20+</strong>
-                                <p class="featured-text">Projects Finished</p>
-                            </div>
-                            <div class="col-lg-6 col-6 featured-border-start ps-5 pt-4">
-                                <strong class="featured-numbers">72+</strong>
-                                <p class="featured-text">Digital Awards</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
 
         <section class="about section-padding" id="section_2">
@@ -505,11 +458,7 @@
             </div>
         </section>
 
-        {{-- testimonials --}}
-
-
-
-
+    
 
     </main>
 

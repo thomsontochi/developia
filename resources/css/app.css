@@ -1,6 +1,13 @@
+/* @import 'bootstrap.min.css';
+@import 'bootstrap-icons.css';
+@import 'magnific-popup.css';
+@import 'developia.css'; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 .projects-image.img-fluid {
     width: 100px !important;

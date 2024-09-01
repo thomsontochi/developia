@@ -40,7 +40,9 @@
                                 <li class="py-3">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0">
-                                            <img class="h-8 w-8 rounded-full" src="{{ asset($service->image) }}" alt="{{ $service->name }}">
+                                            {{-- <img class="h-8 w-8 rounded-full" src="{{ asset($service->image) }}" alt="{{ $service->name }}"> --}}
+                                            {{-- <img class="h-8 w-8 rounded-full" src="{{ $service->icon_class }}" alt="{{ $service->name }}"> --}}
+                                            <i class="services-icon {{ $service->icon_class }}"></i>
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
