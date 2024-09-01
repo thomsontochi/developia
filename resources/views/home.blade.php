@@ -117,7 +117,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 col-12 mx-auto">
-                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
+                        <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5" style="background: #ff5733;">
                             <img src="images/handshake.png" class="avatar-image img-fluid" alt="">
                             <h2 class="text-white ms-4 mb-0">Services</h2>
                         </div>
