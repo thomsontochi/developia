@@ -28,10 +28,7 @@
     <link href="css/developia.css" rel="stylesheet">
 
     <link rel="canonical" href="{{ url()->current() }}" />
-    {{-- <link rel="canonical" href="@yield('canonical', url()->current())" /> --}}
-
-    {{-- {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-
+   
 </head>
 
 <body>
@@ -56,7 +53,7 @@
     <script src="js/magnific-popup-options.js"></script>
     <script src="js/custom.js"></script>
 
-    <script src="{{ mix('js/app.js') }}"></script>
+   
 
     <script type="application/ld+json">
         {
